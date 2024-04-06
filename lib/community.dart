@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_form_app/create_post.dart';
 import 'package:my_form_app/main.dart';
+import 'package:my_form_app/notification.dart';
 
 class Post {
   final String title;
@@ -23,7 +24,7 @@ class Post {
     return Post(
       title: json['title'] ?? 'Default Title',
       description: json['description'] ?? 'Default Description',
-      imageUrl: json['imageUrl'] ?? 'https://via.placeholder.com/150',
+      imageUrl: json['image'] ?? 'https://via.placeholder.com/150',
       authorName: json['name'] ?? 'Hritika',
       postDate: json['date'] ?? '05-04-2024',
     );
@@ -88,7 +89,7 @@ class _FeedPageState extends State<FeedPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Feed'),
+        title: Text('Community'),
         backgroundColor: Colors.blue,
         actions: [
           IconButton(
@@ -99,6 +100,14 @@ class _FeedPageState extends State<FeedPage> {
                   context, MaterialPageRoute(builder: (context) => MyForm()));
             },
           ),
+          //Notification
+          IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => NotificationPage()));
+            },
+          )
         ],
       ),
       body: ListView.builder(
