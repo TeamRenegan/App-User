@@ -7,8 +7,7 @@ class NotificationPage extends StatelessWidget {
 
   Future<List<Map<String, dynamic>>> _fetchNotifications() async {
     final response = await http.get(
-      Uri.parse(
-          'https://rh20bk9g-3001.inc1.devtunnels.ms/posts/title/desc'), // Replace with your API endpoint
+      Uri.parse('https://renegan-inc-backend.onrender.com/posts/title/desc'),
     );
 
     if (response.statusCode == 200) {

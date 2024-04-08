@@ -150,7 +150,7 @@ class _CameraDetailsState extends State<CameraDetails> {
                     MaterialPageRoute(
                       builder: (context) => const LiveStreamPage(
                         urlToFetchStreamUrl:
-                            'https://ankit-s3-1.s3.ap-south-1.amazonaws.com/crime_scenes/crime_scene_20240117_165530.mp4',
+                            'https://ankit-s3-1.s3.ap-south-1.amazonaws.com/crime_scenes/live_stream.mp4',
                       ),
                     ),
                   ),
