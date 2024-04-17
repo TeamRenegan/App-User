@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_form_app/camera_list.dart';
+import 'package:my_form_app/camera_registration.dart';
 import 'package:my_form_app/create_post.dart';
-import 'package:my_form_app/main.dart';
 import 'package:my_form_app/notification.dart';
 
 class Post {
@@ -113,12 +113,10 @@ class _FeedPageState extends State<FeedPage> {
           IconButton(
             icon: Icon(Icons.camera),
             onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => CameraListPage()));
-                  },
-                ),
-
-
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CameraListPage()));
+            },
+          ),
         ],
       ),
       body: ListView.builder(

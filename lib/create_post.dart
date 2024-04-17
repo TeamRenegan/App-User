@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart' as path;
+import 'package:mime/mime.dart';
+import 'package:http_parser/http_parser.dart';
 
 // Models
 class Post {
@@ -88,50 +91,51 @@ class _CreatePostPageState extends State<CreatePostPage> {
   final String postEndpoint = 'https://renegan-inc-backend.onrender.com/posts';
 
   // Function to send post data
-  Future<void> sendPostData(Post post) async {
-    // try {
-    //   final response = await http.post(
-    //     Uri.parse(postEndpoint),
-    //     headers: <String, String>{
-    //       'Content-Type': 'application/json; charset=UTF-8',
-    //     },
-    //     body: jsonEncode(post.toJson()),
-    //   );
-    //   if (response.statusCode == 200) {
-    //     // Post data sent successfully
-    //     print('Post created successfully');
-    //     // Redirect to Community page
-    //     Navigator.pushReplacement(
-    //       context,
-    //       MaterialPageRoute(
-    //         builder: (context) => FeedPage(),
-    //       ),
-    //     );
-    //   } else {
-    //     // Error in sending post data
-    //     print('Failed to create post: ${response.statusCode}');
-    //   }
-    // } catch (error) {
-    //   // Exception occurred while sending post data
-    //   print('Error creating post: $error');
-    // }
+  // Future<void> sendPostData(Post post) async {
+  //   var postUri = Uri.parse(postEndpoint);
+  //   var request = http.MultipartRequest("POST", postUri);
+  //   request.fields['title'] = post.title;
+  //   request.fields['description'] = post.description;
+  //   request.fields['name'] = post.userName;
 
+  //   request.files.add(http.MultipartFile.fromBytes(
+  //     'image',
+  //     await post.image.readAsBytes(),
+  //   ));
+
+  //   request.send().then((response) {
+  //     if (response.statusCode == 200)
+  //       print("Uploaded!");
+  //     else
+  //       print('not uploaded');
+  //   });
+  // }
+
+  Future<void> sendPostData(Post post) async {
     var postUri = Uri.parse(postEndpoint);
     var request = http.MultipartRequest("POST", postUri);
+
+    var file = await http.MultipartFile.fromPath(
+      'image',
+      post.image.path,
+      filename: path.basename(post.image.path),
+      contentType: MediaType.parse(lookupMimeType(post.image.path)!),
+    );
+
     request.fields['title'] = post.title;
     request.fields['description'] = post.description;
     request.fields['name'] = post.userName;
-
-    request.files.add(http.MultipartFile.fromBytes(
-      'image',
-      await post.image.readAsBytes(),
-    ));
+    request.files.add(file);
 
     request.send().then((response) {
       if (response.statusCode == 200)
         print("Uploaded!");
-      else
-        print('not uploaded');
+      else {
+        print('Upload failed with status: ${response.statusCode}.');
+        response.stream.transform(utf8.decoder).listen((value) {
+          print(value);
+        });
+      }
     });
   }
 
@@ -220,8 +224,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
                         description: description,
                         image: image!, // Image URL will be updated after upload
                         userName: userName,
-                        // userProfilePicUrl:
-                        //     'https://placeimg.com/80/80/people', // Example URL, replace with actual user profile pic URL
                       );
                       // Send post data
                       sendPostData(newPost);
