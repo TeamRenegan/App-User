@@ -48,7 +48,7 @@ class NotificationPage extends StatelessWidget {
             return Center(
               child: SizedBox(
                 width: 362,
-                height: 230, // Specific width for error message
+                height: 230, 
                 child: NotificationCard(
                   title: 'Security Alert: Robbery Incident Reported',
                   description:
@@ -67,7 +67,7 @@ class NotificationPage extends StatelessWidget {
                   children: notifications
                       .map(
                         (notification) => SizedBox(
-                          width: 300, // Fixed width for notification cards
+                          width: 300, 
                           child: NotificationCard(
                             title: notification['title']!,
                             description: notification['description']!,
@@ -82,7 +82,7 @@ class NotificationPage extends StatelessWidget {
             // Display default data when no notifications are available
             return Center(
               child: SizedBox(
-                width: 300, // Specific width for default notification
+                width: 300, 
                 child: NotificationCard(
                   title: 'Default Notification',
                   description: 'No notifications found.',

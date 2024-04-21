@@ -9,15 +9,12 @@ import 'package:http_parser/http_parser.dart';
 
 // Models
 class Post {
-  // final String id;
   final String title;
   final String description;
   final File image;
   final String userName;
-  // final String userProfilePicUrl;
 
   Post({
-    // required this.id,
     required this.title,
     required this.description,
     required this.image,
@@ -90,26 +87,6 @@ class _CreatePostPageState extends State<CreatePostPage> {
   // Endpoint to send the post data
   final String postEndpoint = 'https://renegan-inc-backend.onrender.com/posts';
 
-  // Function to send post data
-  // Future<void> sendPostData(Post post) async {
-  //   var postUri = Uri.parse(postEndpoint);
-  //   var request = http.MultipartRequest("POST", postUri);
-  //   request.fields['title'] = post.title;
-  //   request.fields['description'] = post.description;
-  //   request.fields['name'] = post.userName;
-
-  //   request.files.add(http.MultipartFile.fromBytes(
-  //     'image',
-  //     await post.image.readAsBytes(),
-  //   ));
-
-  //   request.send().then((response) {
-  //     if (response.statusCode == 200)
-  //       print("Uploaded!");
-  //     else
-  //       print('not uploaded');
-  //   });
-  // }
 
   Future<void> sendPostData(Post post) async {
     var postUri = Uri.parse(postEndpoint);
@@ -174,7 +151,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                   },
                   onSaved: (newValue) => userName = newValue!,
                 ),
-                const SizedBox(height: 16.0), // Add space
+                const SizedBox(height: 16.0),
                 TextFormField(
                   decoration: const InputDecoration(labelText: 'Title'),
                   validator: (value) {
@@ -185,7 +162,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                   },
                   onSaved: (newValue) => title = newValue!,
                 ),
-                const SizedBox(height: 16.0), // Add space
+                const SizedBox(height: 16.0), 
                 TextFormField(
                   decoration: const InputDecoration(labelText: 'Description'),
                   validator: (value) {
@@ -196,30 +173,29 @@ class _CreatePostPageState extends State<CreatePostPage> {
                   },
                   onSaved: (newValue) => description = newValue!,
                 ),
-                const SizedBox(height: 16.0), // Add space
+                const SizedBox(height: 16.0), 
                 ElevatedButton(
                   onPressed: () => _pickImage(),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue, // Use blue color
+                    backgroundColor: Colors.blue, 
                     shape: RoundedRectangleBorder(
                       borderRadius:
-                          BorderRadius.circular(8.0), // Reduce border radius
+                          BorderRadius.circular(8.0),
                     ),
                   ),
                   child: Text(
                     image == null ? 'Pick Image' : 'Image Picked',
                     style: TextStyle(
-                        color: Colors.white), // Set text color to white
+                        color: Colors.white), 
                   ),
                 ),
-                const SizedBox(height: 32.0), // Add more space
+                const SizedBox(height: 32.0), 
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
                       // Create Post object
                       final newPost = Post(
-                        // id: DateTime.now().toString(),
                         title: title,
                         description: description,
                         image: image!, // Image URL will be updated after upload
@@ -230,16 +206,16 @@ class _CreatePostPageState extends State<CreatePostPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue, // Use blue color
+                    backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius:
-                          BorderRadius.circular(8.0), // Reduce border radius
+                          BorderRadius.circular(8.0), 
                     ),
                   ),
                   child: const Text(
                     'Create Post',
                     style: TextStyle(
-                        color: Colors.white), // Set text color to white
+                        color: Colors.white), 
                   ),
                 ),
               ],

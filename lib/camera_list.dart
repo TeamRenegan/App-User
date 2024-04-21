@@ -101,21 +101,3 @@ class _CameraListPageState extends State<CameraListPage> {
     );
   }
 }
-
-// class StreamPage extends StatelessWidget {
-//   final String streamingUrl;
-
-//   StreamPage(this.streamingUrl);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Streaming'),
-//       ),
-//       body: Center(
-//         child: Text(streamingUrl),
-//       ),
-//     );
-//   }
-// }

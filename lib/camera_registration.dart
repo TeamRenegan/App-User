@@ -150,8 +150,6 @@ class MyFormState extends State<MyForm> {
                 ),
                 TextFormField(
                   decoration: const InputDecoration(labelText: 'Location'),
-
-                  // initialValue: _location,
                   enabled: false,
                   controller: _locationController,
                   validator: (value) {

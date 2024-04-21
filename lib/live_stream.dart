@@ -17,7 +17,6 @@ class _LiveStreamPageState extends State<LiveStreamPage> {
   @override
   void initState() {
     super.initState();
-    // _fetchLiveStreamUrl();
     _initializeVideoPlayer();
   }
 
