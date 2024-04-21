@@ -1,16 +1,24 @@
-# my_form_app
+# User App
 
-A new Flutter project.
+The User App provides features for community users and camera owners, allowing them to engage with the police app and access important information.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Community Section**: Post and view incidents reported by users and police officers.
+- **Camera Registration**: Register your camera to be visible on the police app's map interface.
+- **Notification Page**: Receive notifications for recorded incidents and emergency alerts.
+- **Live Footage Access**: View live footage from registered cameras.
+- **Alerts Page**: View alerts in the form of short footages, including incident footage.
 
-A few resources to get you started if this is your first Flutter project:
+## Usage
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+To use the app, follow these steps:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. [Download](#) or clone the repository.
+2. Install dependencies.
+3. Run the app.
+
+
+## Technologies Used
+
+- [Flutter](https://flutter.dev/)
