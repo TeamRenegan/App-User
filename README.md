@@ -14,7 +14,7 @@ The User App provides features for community users and camera owners, allowing t
 
 To use the app, follow these steps:
 
-1. [Download](#) or clone the repository.
+1. Clone the repository.
 2. Install dependencies.
 3. Run the app.
 
